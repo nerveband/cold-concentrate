@@ -4,7 +4,10 @@ A professional cold brew concentrate calculator with serving dilution guide. Per
 
 **Live App:** https://cold-brew-calculator.netlify.app
 
-![Cold Brew Calculator](screenshot.png)
+<div align="center">
+  <img src="screenshot-prepare.png" width="300" alt="Prepare Concentrate Screen" />
+  <img src="screenshot-serve.png" width="300" alt="Serve & Dilute Screen" />
+</div>
 
 ## Features
 
