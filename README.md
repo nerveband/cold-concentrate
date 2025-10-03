@@ -57,25 +57,11 @@ npm run preview
 
 ## Tech Stack
 
-- React 19 - UI framework
-- Vite 7 - Build tool
-- Tailwind CSS 4 - Styling
-- Lucide React - Icons
-- Vite PWA - Progressive Web App support
-
-## Use Cases
-
-- Home Brewers - Perfect your cold brew concentrate every time
-- Coffee Shops - Quick ratio calculations for nitro dispensers
-- Baristas - Consistent serving strength across batches
-- Mobile Access - Install as PWA for easy access while brewing
+Built with React 19, Vite 7, Tailwind CSS 4, and PWA support for offline use.
 
 ## Pro Tips
 
-1. Add concentrate first, then water to your dispenser
-2. Stir gently before adding nitrogen
-3. Chill concentrate for best results
-4. Adjust ratios to taste and save your preferences
+Add concentrate first, then water. Stir gently before adding nitrogen. Chill concentrate and adjust ratios to taste.
 
 ## Contributing
 
