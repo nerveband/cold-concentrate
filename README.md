@@ -29,7 +29,7 @@ A professional cold brew concentrate calculator with serving dilution guide. Per
 
 ### Online
 
-Visit the live app: [cold-brew-calculator.netlify.app](#) *(URL to be added after deployment)*
+Visit the live app: **[https://cold-brew-calculator.netlify.app](https://cold-brew-calculator.netlify.app)**
 
 ### Local Development
 
