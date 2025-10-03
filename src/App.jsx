@@ -141,17 +141,21 @@ const ColdBrewCalculator = () => {
             <div className="space-y-3 md:space-y-4 lg:space-y-6">
               <div>
                 <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1.5 md:mb-2 lg:mb-3">Concentrate Strength</label>
-                <select
-                  value={strengthPreference}
-                  onChange={(e) => handleStrengthChange(e.target.value)}
-                  className="w-full px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                >
+                <div className="grid grid-cols-2 gap-2">
                   {Object.entries(strengthPresets).map(([key, preset]) => (
-                    <option key={key} value={key}>
+                    <button
+                      key={key}
+                      onClick={() => handleStrengthChange(key)}
+                      className={`px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm rounded-lg font-medium transition-colors ${
+                        strengthPreference === key
+                          ? 'bg-amber-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
                       {preset.name}
-                    </option>
+                    </button>
                   ))}
-                </select>
+                </div>
               </div>
 
               <div>
@@ -199,16 +203,48 @@ const ColdBrewCalculator = () => {
                   <Thermometer className="inline mr-1 md:mr-2 w-3 h-3 md:w-4 md:h-4" />
                   Roast Level
                 </label>
-                <select
-                  value={roastLevel}
-                  onChange={(e) => setRoastLevel(e.target.value)}
-                  className="w-full px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                >
-                  <option value="light">Light Roast</option>
-                  <option value="medium">Medium Roast</option>
-                  <option value="dark">Dark Roast</option>
-                  <option value="very-dark">Very Dark Roast</option>
-                </select>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setRoastLevel('light')}
+                    className={`px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm rounded-lg font-medium transition-colors ${
+                      roastLevel === 'light'
+                        ? 'bg-amber-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    Light
+                  </button>
+                  <button
+                    onClick={() => setRoastLevel('medium')}
+                    className={`px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm rounded-lg font-medium transition-colors ${
+                      roastLevel === 'medium'
+                        ? 'bg-amber-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    Medium
+                  </button>
+                  <button
+                    onClick={() => setRoastLevel('dark')}
+                    className={`px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm rounded-lg font-medium transition-colors ${
+                      roastLevel === 'dark'
+                        ? 'bg-amber-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    Dark
+                  </button>
+                  <button
+                    onClick={() => setRoastLevel('very-dark')}
+                    className={`px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm rounded-lg font-medium transition-colors ${
+                      roastLevel === 'very-dark'
+                        ? 'bg-amber-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    Very Dark
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -284,20 +320,20 @@ const ColdBrewCalculator = () => {
           {!savedConcentrateRatio && (
             <div className="bg-yellow-50 p-2.5 md:p-3 lg:p-4 rounded-lg mb-3 md:mb-4 lg:mb-6 border-l-4 border-yellow-600">
               <h3 className="font-bold text-yellow-800 mb-1.5 md:mb-2 text-sm md:text-base">Which concentrate did you make?</h3>
-              <select
-                onChange={(e) => {
-                  setSavedConcentrateStrength(e.target.value);
-                  setSavedConcentrateRatio(strengthPresets[e.target.value].ratio);
-                }}
-                className="w-full px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500"
-              >
-                <option value="">Select your concentrate type...</option>
+              <div className="grid grid-cols-2 gap-2">
                 {Object.entries(strengthPresets).map(([key, preset]) => (
-                  <option key={key} value={key}>
+                  <button
+                    key={key}
+                    onClick={() => {
+                      setSavedConcentrateStrength(key);
+                      setSavedConcentrateRatio(strengthPresets[key].ratio);
+                    }}
+                    className="px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm rounded-lg font-medium bg-yellow-100 text-yellow-900 hover:bg-yellow-200 transition-colors"
+                  >
                     {preset.name}
-                  </option>
+                  </button>
                 ))}
-              </select>
+              </div>
             </div>
           )}
 
@@ -324,15 +360,21 @@ const ColdBrewCalculator = () => {
                 <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1.5 md:mb-2 lg:mb-3">
                   Desired Serving Strength
                 </label>
-                <select
-                  value={desiredStrength}
-                  onChange={(e) => setDesiredStrength(e.target.value)}
-                  className="w-full px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm lg:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                >
+                <div className="grid grid-cols-3 gap-2">
                   {Object.entries(servingStrengths).map(([key, strength]) => (
-                    <option key={key} value={key}>{strength.name}</option>
+                    <button
+                      key={key}
+                      onClick={() => setDesiredStrength(key)}
+                      className={`px-2 md:px-3 py-1.5 md:py-2 text-xs md:text-sm rounded-lg font-medium transition-colors ${
+                        desiredStrength === key
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {strength.name}
+                    </button>
                   ))}
-                </select>
+                </div>
               </div>
 
               <div className="bg-blue-50 p-2.5 md:p-3 lg:p-4 rounded-lg border-2 border-blue-500">
